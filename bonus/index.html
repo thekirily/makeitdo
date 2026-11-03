@@ -91,7 +91,7 @@ var Q=[];function T(n,d){var u=utm();d=d||{};if(u.utm_campaign)d.film=u.utm_camp
 var qi=setInterval(function(){if(window.umami){clearInterval(qi);Q.forEach(function(x){try{umami.track(x[0],x[1])}catch(e){}});Q=[]}},500);setTimeout(function(){clearInterval(qi)},20000);
 // pass film attribution to checkout links
 document.querySelectorAll('a[data-go]').forEach(function(a){var u=utm();if(!u.utm_campaign)return;try{var x=new URL(a.href);
- if(a.dataset.go==='pdf'){x.searchParams.set('referrer',u.utm_campaign);Object.keys(u).forEach(function(k){x.searchParams.set(k,u[k])})}
+ if(a.dataset.go==='pdf'){x.searchParams.set('checkout[custom][film]',u.utm_campaign);x.searchParams.set('checkout[custom][medium]',u.utm_medium||'');x.searchParams.set('checkout[custom][v]',window.MIDV||'buy')}
  if(a.dataset.go==='amazon'&&window.AMZ&&AMZ[u.utm_campaign]){x=new URL(AMZ[u.utm_campaign])}
  a.href=x.toString();a.setAttribute('data-umami-event-film',u.utm_campaign)}catch(e){}});
 if(window.MIDV==='free'){var fr=document.getElementById('free'),hero=document.getElementById('hero');if(fr&&hero)hero.parentNode.insertBefore(fr,hero.nextSibling)}
