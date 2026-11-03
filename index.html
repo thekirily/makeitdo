@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Make It Do: How Ordinary Americans Actually Did Things</title><meta name="description" content="Films and books about how ordinary Americans actually did things in the 1930s–70s, built on real documents.">
+<link rel="canonical" href="https://thekirily.github.io/makeitdo/"><meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="book"><meta property="og:title" content="Make It Do: How Ordinary Americans Actually Did Things"><meta property="og:description" content="Films and books about how ordinary Americans actually did things in the 1930s–70s, built on real documents.">
+<meta property="og:url" content="https://thekirily.github.io/makeitdo/"><meta property="og:image" content="https://thekirily.github.io/makeitdo/assets/og.jpg"><meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EFE6D2"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/Oswald-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/TableBook-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:Book;font-weight:400;font-display:swap;src:url(assets/TableBook-Regular.woff2) format('woff2')}@font-face{font-family:Book;font-weight:700;font-display:swap;src:url(assets/TableBook-Bold.woff2) format('woff2')}@font-face{font-family:Head;font-weight:600;font-display:swap;src:url(assets/Oswald-SemiBold.woff2) format('woff2')}@font-face{font-family:Head;font-weight:700;font-display:swap;src:url(assets/Oswald-Bold.woff2) format('woff2')}@font-face{font-family:Type;font-weight:400;font-display:optional;src:url(assets/CourierPrime-Regular.woff2) format('woff2')}
+:root{--ink:#1E1B18;--cream:#EFE6D2;--paper:#FBF7EE;--yellow:#F4C430;--red:#B0392B;--soft:#5d4e3a}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 20px/1.5 Book,system-ui,-apple-system,"Segoe UI",sans-serif}
+@media(min-width:760px){body{font-size:21px}}
+a{color:var(--ink)}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.btn,.mark,.brand,.eyebrow{font-family:Head,"Arial Narrow",Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em}
+h1{font-size:68px;line-height:.95;margin:.15em 0 .1em}h1 i{font-style:normal;color:var(--red)}
+@media(min-width:760px){h1{font-size:96px}}
+h2{font-size:40px;line-height:1.02;margin:0 0 .4em}
+h3{font-size:24px;margin:0 0 .2em;letter-spacing:.04em}
+.top{border-bottom:3px solid var(--ink);background:var(--paper)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;min-height:56px}
+.brand{font-weight:700;font-size:22px;letter-spacing:.14em;text-decoration:none}
+.top a.small{font-family:Head;font-weight:600;font-size:17px;letter-spacing:.06em;text-transform:uppercase}
+.preview{background:var(--red);color:#fff;font:600 16px/1.3 Head,sans-serif;letter-spacing:.05em;text-transform:uppercase;text-align:center;padding:8px}
+.lede{font-size:21px;margin:.2em 0 .8em}
+.card{background:#fff;border:2px solid var(--ink);border-radius:4px;padding:14px;margin:6px 0 14px;box-shadow:6px 6px 0 rgba(30,27,24,.12)}
+.card img{display:block;width:100%;height:auto;aspect-ratio:var(--ar,4/3);object-fit:contain}
+.eyebrow{font-weight:600;font-size:16px;letter-spacing:.14em;color:var(--soft)}
+.clue{font-family:Type,"Courier New",monospace;font-size:20px;line-height:1.35;background:linear-gradient(transparent 8%,var(--yellow) 8%,var(--yellow) 92%,transparent 92%);padding:2px 6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.opts{display:grid;gap:12px;margin:16px 0 8px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;min-height:64px;padding:10px 14px;border:3px solid var(--ink);border-radius:6px;background:var(--paper);color:var(--ink);font:400 20px/1.25 Book,sans-serif;text-align:left;cursor:pointer;touch-action:manipulation}
+.opt b{flex:none;width:40px;height:40px;border:3px solid var(--ink);border-radius:50%;display:grid;place-items:center;font:700 20px Head,sans-serif}
+.opt:focus-visible,.btn:focus-visible,summary:focus-visible{outline:4px solid var(--red);outline-offset:3px}
+.opt.right{background:var(--yellow)}.opt.wrong{opacity:.55;text-decoration:line-through}
+.opt[disabled]{cursor:default}
+.reveal{display:none;border-left:8px solid var(--red);background:var(--paper);padding:14px 16px;margin:14px 0 4px}
+.reveal.on{display:block}
+.reveal .verdict{font:700 30px/1.05 Head,sans-serif;text-transform:uppercase;margin:0 0 .3em}
+.reveal p{margin:.3em 0}
+.btn{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;width:100%;min-height:72px;padding:10px 16px;border:3px solid var(--ink);border-radius:6px;background:var(--yellow);color:var(--ink);font-weight:700;font-size:24px;line-height:1.1;text-decoration:none;letter-spacing:.03em;cursor:pointer}
+.btn small{display:block;font:400 16px/1.3 Book,sans-serif;text-transform:none;letter-spacing:0;margin-top:3px}
+.btn.alt{background:var(--paper)}.btn.ghost{background:transparent;min-height:60px;font-size:20px}
+.btns{display:grid;gap:12px;margin:16px 0}
+section{padding:34px 0;border-top:3px solid var(--ink)}
+section.first{border-top:0;padding-top:16px}
+.facts{list-style:none;padding:0;margin:0}
+.facts li{padding:10px 0 10px 40px;border-bottom:1px solid #c9bda6;position:relative}
+.facts li:before{content:"";position:absolute;left:4px;top:15px;width:20px;height:20px;border:3px solid var(--ink);border-radius:2px;background:linear-gradient(135deg,transparent 44%,var(--red) 44%,var(--red) 58%,transparent 58%)}
+.pages{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.pages a{display:block;background:#fff;border:2px solid var(--ink);box-shadow:4px 4px 0 rgba(30,27,24,.12)}
+.pages img{display:block;width:100%;height:auto;aspect-ratio:8.5/11}
+.caption{font-size:16px;color:var(--soft);margin-top:6px}
+.cover{display:grid;grid-template-columns:42% 1fr;gap:18px;align-items:center}
+.cover img{width:100%;height:auto;aspect-ratio:8.5/11;box-shadow:8px 8px 0 rgba(30,27,24,.18);border:1px solid var(--ink)}
+.price{font:700 44px/1 Head,sans-serif}.price s{font-size:24px;color:var(--soft)}
+.buybox{background:var(--paper);border:3px solid var(--ink);border-radius:6px;padding:18px}
+.buybox+.buybox{margin-top:14px}
+.ways{counter-reset:w;padding:0;list-style:none}
+.ways li{counter-increment:w;padding-left:56px;position:relative;margin-bottom:16px}
+.ways li:before{content:counter(w);position:absolute;left:0;top:-6px;font:700 46px/1 Head,sans-serif;color:var(--red)}
+form.sheet{display:grid;gap:10px;margin-top:12px}
+label{font:600 17px Head,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+input[type=email],input[type=text],textarea{width:100%;min-height:60px;padding:12px 14px;border:3px solid var(--ink);border-radius:6px;font:400 21px Book,sans-serif;background:#fff;color:var(--ink)}
+details{border-bottom:2px solid var(--ink);padding:4px 0}
+summary{cursor:pointer;font:600 22px/1.25 Head,sans-serif;letter-spacing:.02em;padding:14px 34px 14px 0;list-style:none;position:relative}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";position:absolute;right:4px;top:8px;font-size:30px}
+details[open] summary:after{content:"–"}
+details p{margin:0 0 16px}
+footer{background:var(--ink);color:var(--cream);padding:30px 0 60px;font-size:17px}
+footer a{color:var(--cream)}
+.sticky{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:3px solid var(--ink);padding:8px 12px calc(8px + env(safe-area-inset-bottom));display:none;z-index:5}
+.sticky.on{display:block}.sticky .btn{min-height:56px;font-size:20px}
+.ok{background:var(--yellow);padding:12px 14px;border-radius:6px;display:none}.ok.on{display:block}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style><script defer src="https://cloud.umami.is/script.js" data-website-id="350632a8-b3b8-46e9-9f9b-434517930023" data-do-not-track="true"></script></head><body><div class="preview">Preview: checkout not connected yet</div><header class="top"><div class="wrap"><a class="brand" href="">MAKE IT DO</a><a class="small" href="what-is-it/#buy">The book</a></div></header><main><section class='first'><div class='wrap'><div class="eyebrow">How ordinary Americans actually did things, 1930s–70s</div><h1>Make It Do</h1>
+<p class="lede">Films about how ordinary Americans actually did things, built on real documents, with you as the expert witness.</p>
+<div class="btns"><a class="btn" href="what-is-it/">The book: What Is It?<small>A large-print picture quiz of 50 everyday things.</small></a>
+<a class="btn alt" href="https://www.youtube.com/@makeitdo">Watch the films<small>On YouTube.</small></a></div></div></section></main><footer><div class='wrap'><p>© 2026 Make It Do</p></div></footer><script>
+(function(){
+var q=new URLSearchParams(location.search),keys=['utm_source','utm_medium','utm_campaign','utm_content'];
+try{keys.forEach(function(k){if(q.get(k))sessionStorage.setItem(k,q.get(k))})}catch(e){}
+function utm(){var o={};keys.forEach(function(k){try{var v=sessionStorage.getItem(k);if(v)o[k]=v}catch(e){}});return o}
+function T(n,d){try{if(window.umami){var u=utm();d=d||{};if(u.utm_campaign)d.film=u.utm_campaign;umami.track(n,d)}}catch(e){}}
+// pass film attribution to checkout links
+document.querySelectorAll('a[data-go]').forEach(function(a){var u=utm();if(!u.utm_campaign)return;try{var x=new URL(a.href);
+ if(a.dataset.go==='pdf'){x.searchParams.set('referrer',u.utm_campaign);Object.keys(u).forEach(function(k){x.searchParams.set(k,u[k])})}
+ a.href=x.toString();a.setAttribute('data-umami-event-film',u.utm_campaign)}catch(e){}});
+// demo quiz
+var opts=document.querySelectorAll('.opt'),rv=document.getElementById('reveal');
+opts.forEach(function(b){b.addEventListener('click',function(){var right=b.hasAttribute('data-right');
+ opts.forEach(function(o){o.disabled=true;if(o.hasAttribute('data-right'))o.classList.add('right');else if(o===b)o.classList.add('wrong')});
+ document.getElementById('verdict').textContent=right?'You got it.':'Not quite.';rv.classList.add('on');
+ rv.scrollIntoView({behavior:'smooth',block:'start'});T('demo-answer',{correct:right?'yes':'no'})})});
+// hint: native share sheet, else text message
+var msg='This is what I\'d like this year: "What Is It?", a large-print picture quiz of 50 things from the 1950s to the 70s. ';
+document.querySelectorAll('[data-hint]').forEach(function(b){b.addEventListener('click',function(){var url=location.origin+location.pathname+'?utm_source=hint&utm_medium=share&utm_campaign='+(utm().utm_campaign||'page');
+ if(navigator.share){navigator.share({title:'What Is It?',text:msg,url:url}).catch(function(){})}else{location.href='sms:?&body='+encodeURIComponent(msg+url)}})});
+// sticky buy bar after the demo is answered or scrolled past
+var st=document.getElementById('sticky'),buy=document.getElementById('buy');
+if(st&&buy&&'IntersectionObserver'in window){var seen=false;new IntersectionObserver(function(es){es.forEach(function(x){if(x.target===buy){seen=x.isIntersecting}});st.classList.toggle('on',!seen&&window.scrollY>900)}).observe(buy);
+ addEventListener('scroll',function(){st.classList.toggle('on',window.scrollY>900&&!(buy.getBoundingClientRect().top<innerHeight&&buy.getBoundingClientRect().bottom>0))},{passive:true})}
+// free sheet form
+var f=document.getElementById('sheetform');if(f){f.addEventListener('submit',function(ev){T('free-signup');if(!f.getAttribute('action')){ev.preventDefault();document.getElementById('sheetok').classList.add('on')}})}
+})();
+</script></body></html>
