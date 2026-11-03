@@ -75,7 +75,7 @@ footer a{color:var(--cream)}
 .sticky.on{display:block}.sticky .btn{min-height:56px;font-size:20px}
 .ok{background:var(--yellow);padding:12px 14px;border-radius:6px;display:none}.ok.on{display:block}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-</style><script defer src="https://cloud.umami.is/script.js" data-website-id="350632a8-b3b8-46e9-9f9b-434517930023" data-do-not-track="true"></script></head><body><div class="preview">Preview: checkout not connected yet</div><header class="top"><div class="wrap"><a class="brand" href="">MAKE IT DO</a><a class="small" href="what-is-it/#buy">The book</a></div></header><main><section class='first'><div class='wrap'><div class="eyebrow">How ordinary Americans actually did things, 1930s–70s</div><h1>Make It Do</h1>
+</style><script>addEventListener('load',function(){var go=function(){var s=document.createElement('script');s.src='https://cloud.umami.is/script.js';s.defer=true;s.dataset.websiteId='350632a8-b3b8-46e9-9f9b-434517930023';s.dataset.doNotTrack='true';document.head.appendChild(s)};('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1200)})</script></head><body><div class="preview">Preview: checkout not connected yet</div><header class="top"><div class="wrap"><a class="brand" href="">MAKE IT DO</a><a class="small" href="what-is-it/#buy">The book</a></div></header><main><section class='first'><div class='wrap'><div class="eyebrow">How ordinary Americans actually did things, 1930s–70s</div><h1>Make It Do</h1>
 <p class="lede">Films about how ordinary Americans actually did things, built on real documents, with you as the expert witness.</p>
 <div class="btns"><a class="btn" href="what-is-it/">The book: What Is It?<small>A large-print picture quiz of 50 everyday things.</small></a>
 <a class="btn alt" href="https://www.youtube.com/@makeitdo">Watch the films<small>On YouTube.</small></a></div></div></section></main><footer><div class='wrap'><p>© 2026 Make It Do</p></div></footer><script>
@@ -83,10 +83,12 @@ footer a{color:var(--cream)}
 var q=new URLSearchParams(location.search),keys=['utm_source','utm_medium','utm_campaign','utm_content'];
 try{keys.forEach(function(k){if(q.get(k))sessionStorage.setItem(k,q.get(k))})}catch(e){}
 function utm(){var o={};keys.forEach(function(k){try{var v=sessionStorage.getItem(k);if(v)o[k]=v}catch(e){}});return o}
-function T(n,d){try{if(window.umami){var u=utm();d=d||{};if(u.utm_campaign)d.film=u.utm_campaign;umami.track(n,d)}}catch(e){}}
+var Q=[];function T(n,d){var u=utm();d=d||{};if(u.utm_campaign)d.film=u.utm_campaign;if(window.umami){try{umami.track(n,d)}catch(e){}}else{Q.push([n,d])}}
+var qi=setInterval(function(){if(window.umami){clearInterval(qi);Q.forEach(function(x){try{umami.track(x[0],x[1])}catch(e){}});Q=[]}},500);setTimeout(function(){clearInterval(qi)},20000);
 // pass film attribution to checkout links
 document.querySelectorAll('a[data-go]').forEach(function(a){var u=utm();if(!u.utm_campaign)return;try{var x=new URL(a.href);
  if(a.dataset.go==='pdf'){x.searchParams.set('referrer',u.utm_campaign);Object.keys(u).forEach(function(k){x.searchParams.set(k,u[k])})}
+ if(a.dataset.go==='amazon'&&window.AMZ&&AMZ[u.utm_campaign]){x=new URL(AMZ[u.utm_campaign])}
  a.href=x.toString();a.setAttribute('data-umami-event-film',u.utm_campaign)}catch(e){}});
 // demo quiz
 var opts=document.querySelectorAll('.opt'),rv=document.getElementById('reveal');
@@ -99,9 +101,8 @@ var msg='This is what I\'d like this year: "What Is It?", a large-print picture 
 document.querySelectorAll('[data-hint]').forEach(function(b){b.addEventListener('click',function(){var url=location.origin+location.pathname+'?utm_source=hint&utm_medium=share&utm_campaign='+(utm().utm_campaign||'page');
  if(navigator.share){navigator.share({title:'What Is It?',text:msg,url:url}).catch(function(){})}else{location.href='sms:?&body='+encodeURIComponent(msg+url)}})});
 // sticky buy bar after the demo is answered or scrolled past
-var st=document.getElementById('sticky'),buy=document.getElementById('buy');
-if(st&&buy&&'IntersectionObserver'in window){var seen=false;new IntersectionObserver(function(es){es.forEach(function(x){if(x.target===buy){seen=x.isIntersecting}});st.classList.toggle('on',!seen&&window.scrollY>900)}).observe(buy);
- addEventListener('scroll',function(){st.classList.toggle('on',window.scrollY>900&&!(buy.getBoundingClientRect().top<innerHeight&&buy.getBoundingClientRect().bottom>0))},{passive:true})}
+var st=document.getElementById('sticky'),buy=document.getElementById('buy'),hero=document.getElementById('hero');
+if(st&&buy&&hero&&'IntersectionObserver'in window){var vis={buy:false,hero:true};var io=new IntersectionObserver(function(es){es.forEach(function(x){vis[x.target.id]=x.isIntersecting});st.classList.toggle('on',!vis.buy&&!vis.hero)});io.observe(buy);io.observe(hero)}
 // free sheet form
 var f=document.getElementById('sheetform');if(f){f.addEventListener('submit',function(ev){T('free-signup');if(!f.getAttribute('action')){ev.preventDefault();document.getElementById('sheetok').classList.add('on')}})}
 })();
