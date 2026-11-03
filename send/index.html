@@ -74,8 +74,9 @@ footer a{color:var(--cream)}
 .sticky{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:3px solid var(--ink);padding:8px 12px calc(8px + env(safe-area-inset-bottom));display:none;z-index:5}
 .sticky.on{display:block}.sticky .btn{min-height:56px;font-size:20px}
 .ok{background:var(--yellow);padding:12px 14px;border-radius:6px;display:none}.ok.on{display:block}
+html[data-v=free] .arm-buy,html:not([data-v=free]) .arm-free{display:none}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-</style><script>addEventListener('load',function(){var go=function(){var s=document.createElement('script');s.src='https://cloud.umami.is/script.js';s.defer=true;s.dataset.websiteId='350632a8-b3b8-46e9-9f9b-434517930023';s.dataset.doNotTrack='true';document.head.appendChild(s)};('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1200)})</script></head><body><div class="preview">Preview: checkout not connected yet</div><header class="top"><div class="wrap"><a class="brand" href="../">MAKE IT DO</a><a class="small" href="../what-is-it/#buy">The book</a></div></header><main><section class='first'><div class='wrap'><div class="eyebrow">For the next book</div><h1>Stump us<i>.</i></h1>
+</style><script>(function(){try{var q=new URLSearchParams(location.search).get('v');var v=q||localStorage.getItem('midv');if(v!=='free'&&v!=='buy'){v=Math.random()<0.5?'free':'buy'}localStorage.setItem('midv',v);window.MIDV=v;document.documentElement.dataset.v=v}catch(e){window.MIDV='buy'}})();addEventListener('load',function(){var go=function(){var s=document.createElement('script');s.src='https://cloud.umami.is/script.js';s.defer=true;s.dataset.websiteId='350632a8-b3b8-46e9-9f9b-434517930023';s.dataset.doNotTrack='true';if(window.MIDV)s.dataset.tag='v-'+window.MIDV;document.head.appendChild(s)};('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1200)})</script></head><body><div class="preview">Preview: checkout not connected yet</div><header class="top"><div class="wrap"><a class="brand" href="../">MAKE IT DO</a><a class="small" href="../what-is-it/#buy">The book</a></div></header><main><section class='first'><div class='wrap'><div class="eyebrow">For the next book</div><h1>Stump us<i>.</i></h1>
 <p class="lede">Tell us about a thing from your house, your car or your town that you think would stump everybody. The best ones go in the next book and the films, with your first name and town if you'd like.</p>
 <form class="sheet" id="sendform"><label for="thing">What was it called?</label><input id="thing" name="thing" type="text" required>
 <label for="how">How did you use it?</label><textarea id="how" name="how" rows="6" style="min-height:160px"></textarea>
@@ -86,13 +87,14 @@ footer a{color:var(--cream)}
 var q=new URLSearchParams(location.search),keys=['utm_source','utm_medium','utm_campaign','utm_content'];
 try{keys.forEach(function(k){if(q.get(k))sessionStorage.setItem(k,q.get(k))})}catch(e){}
 function utm(){var o={};keys.forEach(function(k){try{var v=sessionStorage.getItem(k);if(v)o[k]=v}catch(e){}});return o}
-var Q=[];function T(n,d){var u=utm();d=d||{};if(u.utm_campaign)d.film=u.utm_campaign;if(window.umami){try{umami.track(n,d)}catch(e){}}else{Q.push([n,d])}}
+var Q=[];function T(n,d){var u=utm();d=d||{};if(u.utm_campaign)d.film=u.utm_campaign;d.v=window.MIDV||'buy';if(window.umami){try{umami.track(n,d)}catch(e){}}else{Q.push([n,d])}}
 var qi=setInterval(function(){if(window.umami){clearInterval(qi);Q.forEach(function(x){try{umami.track(x[0],x[1])}catch(e){}});Q=[]}},500);setTimeout(function(){clearInterval(qi)},20000);
 // pass film attribution to checkout links
 document.querySelectorAll('a[data-go]').forEach(function(a){var u=utm();if(!u.utm_campaign)return;try{var x=new URL(a.href);
  if(a.dataset.go==='pdf'){x.searchParams.set('referrer',u.utm_campaign);Object.keys(u).forEach(function(k){x.searchParams.set(k,u[k])})}
  if(a.dataset.go==='amazon'&&window.AMZ&&AMZ[u.utm_campaign]){x=new URL(AMZ[u.utm_campaign])}
  a.href=x.toString();a.setAttribute('data-umami-event-film',u.utm_campaign)}catch(e){}});
+if(window.MIDV==='free'){var fr=document.getElementById('free'),hero=document.getElementById('hero');if(fr&&hero)hero.parentNode.insertBefore(fr,hero.nextSibling)}
 // demo quiz
 var opts=document.querySelectorAll('.opt'),rv=document.getElementById('reveal');
 opts.forEach(function(b){b.addEventListener('click',function(){var right=b.hasAttribute('data-right');
